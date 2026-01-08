@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { GoogleAnalytics } from '@next/third-parties/google'
 import "./globals.css";
 import AppProviders from "./provider";
 import { cn } from "@/lib/utils";
@@ -20,7 +21,6 @@ export const metadata: Metadata = {
     description: METADATA.description,
     keywords: METADATA.keywords,
 };
-
 export default function RootLayout({
     children,
 }: Readonly<{
@@ -35,6 +35,7 @@ export default function RootLayout({
                     {children}
                 </AppProviders>
             </body>
+            <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID!} />
         </html>
     );
 }
